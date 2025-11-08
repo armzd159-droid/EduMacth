@@ -806,6 +806,13 @@ a:hover {
         margin-bottom: 25px;
         text-align: center;
     }
+    @media (max-width: 768px) {
+    .answer-card {
+        padding: 15px;
+        font-size: 1em;
+        text-align: center;
+    }
+}
     #question-number { font-size: 1em; color: #666; margin-bottom: 10px; }
     #question-text { font-size: 1.5em; font-weight: 700; color: #333; }
 
@@ -815,21 +822,27 @@ a:hover {
     }
 
     .answer-card {
-        background-color: #fff;
-        border: 2px solid #ddd;
-        border-radius: 8px;
-        padding: 15px 20px;
-        font-size: 1.1em;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        text-align: left;
-    }
-    .answer-card:hover { border-color: #aaa; }
-    .answer-card.selected {
-        border-color: #28a745;
-        background-color: #e9f7ef;
-        box-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
-    }
+    display: block; /* << ทำให้มันแสดงผล (สำคัญ!) */
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    font-size: 1.1em;
+    text-align: left;
+}
+    .answer-card:hover {
+    border-color: #28a745;
+}
+
+.answer-card.selected {
+    border-color: #28a745;
+    background-color: #eaf7ed;
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
+}
 
     .quiz-navigation {
         display: flex;
