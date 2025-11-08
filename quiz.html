@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบ - Edu Match</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="quiz-page-body">
+    
+    <header class="quiz-header">
+        <a href="index.html" class="quiz-back">&larr; home</a>
+        <div class="logo">Edu Match</div>
+        <div class="lang-switcher">
+                <button id="lang-switcher-th" class="lang-btn active">TH</button>
+                <button id="lang-switcher-en" class="lang-btn">EN</button>
+            </div>
+        <a href="index.html" class="quiz-close">X</a>
+    </header>
+
+    <main class="quiz-container">
+        <div class="progress-bar-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        
+        <div class="question-container">
+            <h2 id="question-number">คำถามที่ 1 จาก 14</h2>
+            <p id="question-text">กำลังโหลดคำถาม...</p>
+        </div>
+        
+        <div id="answer-options" class="answer-options">
+            
+        </div>
+        
+        <div class="quiz-navigation">
+            <button id="prev-btn" class="button secondary">ก่อนหน้า</button>
+            <button id="next-btn" class="button primary" disabled>ถัดไป</button>
+        </div>
+    </main>
+
+    
+    <script src="quiz.js"></script>
+</body>
+</html>
