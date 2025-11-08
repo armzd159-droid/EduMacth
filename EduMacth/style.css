@@ -1,0 +1,1344 @@
+/* Basic Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {/* --- [ใหม่] Animation สำหรับ Fade-in --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* ค่อยๆ ลอยขึ้นมา */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* สั่งให้ "main" ของทุกหน้าใช้ Animation นี้ */
+.main-content, 
+.login-container, 
+.quiz-container, 
+.result-container, 
+.guide-container,
+.profile-container {
+    animation: fadeIn 0.5s ease-out;
+}
+    font-family: 'Chakra Petch', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7f6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+}
+
+.button.primary {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+.button.primary:hover {
+    background-color: #218838;
+}
+
+.button.secondary {
+    background-color: transparent;
+    color: #28a745;
+    border: 2px solid #28a745;
+}
+
+.button.secondary:hover {
+    background-color: #e6ffe6;
+    color: #218838;
+}
+
+/* Header & Navbar */
+.main-header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    padding: 10px 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Limit width on larger screens */
+    margin: 0 auto;
+}
+
+.menu-toggle, .close-menu {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    padding: 5px;
+}
+
+.logo {
+    font-family: 'Chakra Petch', cursive; /* More playful font */
+    font-size: 28px;
+    font-weight: 700;
+    color: #28a745; /* Brand color */
+}
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between icons */
+}
+
+.nav-icon-link {
+    font-size: 24px;
+    color: #555;
+    display: flex; /* To center icon/button */
+    align-items: center;
+}
+
+/* สไตล์ใหม่สำหรับแสดงชื่อผู้ใช้ */
+.username-display {
+    font-family: 'Chakra Petch', sans-serif;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+/* ถ้าเป็น Guest (ยังไม่ล็อกอิน) */
+.username-display.guest {
+    background-color: #f8f9fa; /* สีเทาจางๆ */
+    border: 1px solid #dee2e6;
+    color: #6c757d; /* สีเทาเข้ม */
+    font-style: italic; /* ตัวเอียง */
+}
+.username-display.guest:hover {
+    background-color: #e9ecef;
+}
+
+/* ถ้าล็อกอินแล้ว */
+.username-display.logged-in {
+    background-color: #e9f7ef; /* สีเขียวจางๆ (สีแบรนด์) */
+    border: 1px solid #28a745;
+    color: #218838; /* สีเขียวเข้ม */
+    font-weight: 700; /* ตัวหนา */
+}
+.username-display.logged-in:hover {
+    background-color: #d4edda;
+}
+
+/* Main Content */
+.main-content {
+    padding: 20px 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Hero Slider */
+.hero-slider {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #e9f7ef; /* Light background for the slider */
+}
+
+.slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* For JS slide animation */
+}
+
+.slider-item {
+    min-width: 100%;
+    height: 200px; /* Fixed height for mobile */
+    flex-shrink: 0; /* Prevent shrinking */
+
+    /* --- นี่คือส่วนที่สำคัญมากสำหรับรูปภาพ --- */
+    background-size: cover; /* ให้รูปภาพเต็มพื้นที่โดยไม่บิดเบี้ยว */
+    background-position: center; /* จัดรูปให้อยู่ตรงกลาง */
+    position: relative; /* <-- เพิ่มบรรทัดนี้ (สำคัญมาก) */
+    cursor: pointer; /* <-- เพิ่มบรรทัดนี้ (เพื่อให้เมาส์เป็นรูปมือ) */
+}
+
+
+/* --- เพิ่มโค้ดนี้ที่ท้ายไฟล์ style.css --- */
+            
+/* สำคัญ: ถ้าคุณใช้ชื่อโฟลเดอร์หรือชื่อไฟล์อื่น
+    ต้องแก้ที่อยู่ (URL) ตรงนี้ให้ถูกต้องนะครับ
+*/
+
+.slider-item.slide-1 {
+    background-image: url('img/slide1.png');
+}
+.slider-item.slide-2 {
+    background-image: url('img/slide2.png');
+}
+.slider-item.slide-3 {
+    background-image: url('img/slide3.png');
+}
+
+.slider-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+}
+
+.slider-pagination .dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.slider-pagination .dot.active {
+    background-color: #28a745;
+}
+
+.slider-content {
+    position: relative; /* <-- ต้องมีบรรทัดนี้ */
+    z-index: 2; /* <-- ต้องมีบรรทัดนี้ (เพื่อให้ข้อความอยู่ "ข้างบน" ลิงก์) */
+    /* ...สไตล์อื่นๆ... */
+}
+
+/* Call to Action Section */
+.call-to-action-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #28a745;
+}
+
+.section-description {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-direction: column; /* Stack on mobile */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Featured Careers Section */
+.featured-careers-section {
+    margin-bottom: 40px;
+}
+
+.career-cards-container {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scroll on mobile */
+    gap: 15px;
+    padding-bottom: 10px; /* Space for scrollbar */
+    -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none;  /* Hide scrollbar for IE/Edge */
+}
+
+.career-cards-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+
+.career-card {
+    flex: 0 0 70%; /* Take 70% width, don't grow/shrink */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    min-width: 250px; /* Minimum width for card */
+}
+
+.career-card h3 {
+    color: #28a745;
+    margin-bottom: 8px;
+}
+
+.career-card p {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.card-link {
+    font-weight: 700;
+    color: #007bff;
+}
+
+/* Side Menu */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -280px; /* Off-screen by default */
+    width: 280px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    transition: left 0.3s ease-in-out;
+    z-index: 2000;
+    padding: 20px;
+}
+
+.side-menu.open {
+    left: 0;
+}
+
+.side-menu .close-menu {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 30px;
+    color: #666;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding-top: 60px; /* Space for close button */
+}
+
+.side-menu ul li {
+    margin-bottom: 15px;
+}
+
+.side-menu ul li a {
+    display: block;
+    padding: 10px 0;
+    font-size: 1.1em;
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+.side-menu ul li a:hover {
+    color: #28a745;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+    display: none; /* Hidden by default */
+}
+
+
+/* Login Page Specific Styles */
+.login-page-body {
+    background-color: #e9f7ef; /* Light green background */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.login-page-body .main-header {
+    background-color: #28a745; /* Green header for login */
+    color: white;
+    box-shadow: none;
+}
+
+.login-page-body .navbar {
+    justify-content: space-between;
+}
+
+.login-page-body .logo-center {
+    font-family: 'Chakra Petch', cursive;
+    font-size: 28px;
+    font-weight: 700;
+    color: white; /* White logo on green header */
+    flex-grow: 1; /* Allow to take space */
+    text-align: center;
+}
+
+.login-page-body .back-button {
+    color: white;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+.login-page-body .back-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+.login-container {
+    flex-grow: 1; /* Make container take available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    padding: 20px;
+}
+
+.login-title {
+    font-size: 2em;
+    color: #28a745;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.login-form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px; /* Limit form width */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"]{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+    outline: none;
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.login-button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    font-size: 1.1em;
+}
+
+.register-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.register-section p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.register-button {
+    width: 100%;
+    max-width: 250px;
+    padding: 10px;
+    font-size: 1em;
+}
+
+.forgot-password {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #007bff;
+}
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .main-header {
+        padding: 15px 30px;
+    }
+    .navbar {
+        justify-content: space-between;
+    }
+    .menu-toggle {
+        display: none; /* Hide menu toggle on larger screens */
+    }
+    .nav-icons {
+        margin-left: auto; /* Push icons to the right */
+        gap: 25px;
+    }
+    .main-content {
+        padding: 30px;
+    }
+    .hero-slider .slider-item {
+        height: 350px; /* Taller slider on desktop */
+        font-size: 1.8em;
+    }
+    .cta-buttons {
+        flex-direction: row; /* Row on desktop */
+        justify-content: center;
+    }
+    .button {
+        width: auto; /* Reset width for desktop */
+    }
+    .career-cards-container {
+        justify-content: center;
+        flex-wrap: wrap; /* Allow wrapping */
+        overflow-x: hidden; /* No scrollbar on desktop */
+        gap: 25px;
+    }
+    .career-card {
+        flex: 0 0 calc(33% - 25px); /* 3 cards per row */
+        max-width: calc(33% - 25px);
+        min-width: unset; /* Remove min-width override */
+    }
+
+    .side-menu {
+        left: -350px; /* Taller width on desktop */
+        width: 350px;
+    }
+    .side-menu.open {
+        left: 0;
+    }
+
+    .login-title {
+        font-size: 2.5em;
+    }
+    .login-form {
+        padding: 40px;
+    }
+    .register-button {
+        max-width: 200px; /* Smaller button on desktop */
+    }
+}
+
+/* For even larger screens */
+@media (min-width: 1024px) {
+    .main-header .navbar {
+        gap: 50px; /* More space around logo */
+    }
+    .logo {
+        font-size: 32px;
+    }
+    .nav-icon-link {
+        font-size: 28px;
+    }
+    .hero-slider .slider-item {
+        height: 450px;
+        font-size: 2.2em;
+    }
+    .career-card {
+        flex: 0 0 calc(25% - 25px); /* 4 cards per row */
+        max-width: calc(25% - 25px);
+    }
+    /* Style for switching between login/register forms */
+    .switch-form-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 25px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
+
+    .switch-form-link p {
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .switch-form-link .register-button {
+        width: 100%;
+        max-width: 250px;
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    /* Make the register section in login.html consistent */
+    .register-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 25px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
+
+    .register-section p {
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .register-section .register-button {
+        width: 100%;
+        max-width: 250px;
+        padding: 10px;
+        font-size: 1em;
+    }
+    /* --- Quiz Page Styles --- */
+    .quiz-page-body {
+        background-color: #f4f7f6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .quiz-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .quiz-header .logo { font-size: 24px; color: #28a745; font-weight: 700; }
+    .quiz-back, .quiz-close { color: #555; font-size: 1.1em; padding: 5px; }
+
+    .quiz-container {
+        flex-grow: 1;
+        padding: 20px;
+        max-width: 600px;
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .progress-bar-container {
+        width: 100%;
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        height: 10px;
+        margin-bottom: 25px;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        width: 0%; /* Will be updated by JS */
+        height: 100%;
+        background-color: #28a745;
+        border-radius: 5px;
+        transition: width 0.3s ease;
+    }
+
+    .question-container {
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    #question-number { font-size: 1em; color: #666; margin-bottom: 10px; }
+    #question-text { font-size: 1.5em; font-weight: 700; color: #333; }
+
+    .answer-options {
+        display: grid;
+        gap: 15px;
+    }
+
+    .answer-card {
+        background-color: #fff;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        padding: 15px 20px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: left;
+    }
+    .answer-card:hover { border-color: #aaa; }
+    .answer-card.selected {
+        border-color: #28a745;
+        background-color: #e9f7ef;
+        box-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
+    }
+
+    .quiz-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+    }
+    .quiz-navigation button:disabled {
+        background-color: #ccc;
+        border-color: #ccc;
+        color: #888;
+        cursor: not-allowed;
+    }
+
+    /* --- Result Page Styles --- */
+    .result-page-body { background-color: #f4f7f6; }
+    .result-page-body .main-header { background-color: #fff; }
+    .result-page-body .logo-center { color: #28a745; }
+    .result-page-body .back-button { color: #333; }
+
+    .result-container {
+        padding: 20px 15px;
+        max-width: 800px;
+        margin: 20px auto;
+    }
+
+    .summary-card {
+        background: linear-gradient(135deg, #28a745, #218838);
+        color: white;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+    }
+    #result-title { font-size: 2em; margin-bottom: 10px; }
+    #result-description { font-size: 1.1em; opacity: 0.9; }
+
+    .match-analysis {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        text-align: center;
+        border: 1px solid #e0e0e0;
+    }
+    #match-title { font-size: 1.3em; margin-bottom: 10px; color: #333; }
+    #match-insight { font-size: 1.1em; color: #555; }
+
+    .tab-nav {
+        display: flex;
+        justify-content: center;
+        border-bottom: 2px solid #ddd;
+        margin-bottom: 20px;
+    }
+    .tab-link {
+        background: none;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.1em;
+        font-family: 'Chakra Petch', sans-serif;
+        font-weight: 700;
+        cursor: pointer;
+        color: #666;
+        border-bottom: 3px solid transparent;
+        margin-bottom: -2px; /* Aligns with parent border */
+    }
+    .tab-link.active {
+        color: #28a745;
+        border-bottom-color: #28a745;
+    }
+
+    .tab-content { 
+        display: none; 
+        text-align: centers;
+    }
+    /* --- สไตล์สำหรับหัวข้อ "สาขาสำหรับ..." ให้จัดกลาง --- */
+    .tab-content h3 {
+        /* * บรรทัดนี้คือการ "จัดกลาง" ที่คุณต้องการ
+        * (แม้ว่า .tab-content จะสั่งไปแล้ว แต่การสั่งซ้ำที่นี่จะแน่นอนกว่า)
+        */
+        text-align: center;
+
+        /* * และนี่คือการปรับแต่ง UI เพิ่มเติมให้สวยงาม
+        */
+        font-size: 1.5em; /* ทำให้ตัวใหญ่ขึ้นเล็กน้อย */
+        font-weight: 700;
+        color: #333;       /* สีเข้มขึ้น */
+        margin-top: 10px;   /* เพิ่มระยะห่างด้านบน */
+        margin-bottom: 25px; /* เพิ่มระยะห่างด้านล่าง (ก่อนการ์ด) */
+    }
+    .tab-content.active { display: block; }
+    /* --- สไตล์ใหม่สำหรับ Field Cards (แทน Accordion) --- */
+    /* .accordion ตอนนี้ทำหน้าที่เป็นแค่ container */
+    .accordion {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        /* การ์ดจะจัดกลาง เพราะ .tab-content มี text-align: center */
+        /* แต่เราจะให้การ์ดชิดซ้าย เพื่อให้อ่านง่าย */
+        max-width: 600px; /* จำกัดความกว้าง */
+        margin: 0 auto; /* ทำให้กองการ์ดนี้อยู่ตรงกลาง */
+    }
+
+    .field-card {
+        background-color: #fff;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        text-align: left; /* บังคับให้เนื้อหาในการ์ดชิดซ้าย */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .field-card-header {
+        font-size: 1.3em;
+        font-weight: 700;
+        color: #28a745; /* สีแบรนด์ */
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+    }
+    .field-card-content h4 {
+        font-size: 1.1em;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    .field-card-content ul {
+        list-style-type: '•';
+        padding-left: 20px;
+    }
+    .field-card-content li {
+        margin-bottom: 8px;
+        color: #555;
+    }
+    /* --- Result Page: Save Result CTA --- */
+    .save-result-cta {
+        background-color: #fff;
+        border: 2px dashed #28a745; /* กรอบแบบประ */
+        border-radius: 10px;
+        padding: 25px 30px;
+        text-align: center;
+        margin-top: 40px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .save-result-cta h3 {
+        font-size: 1.6em;
+        color: #28a745;
+        margin-bottom: 10px;
+    }
+
+    .save-result-cta p {
+        font-size: 1.1em;
+        color: #555;
+        margin-bottom: 25px;
+    }
+
+    .save-result-cta .cta-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media (min-width: 768px) {
+        .save-result-cta .cta-buttons {
+            flex-direction: row; /* เรียงแนวนอนบนจอใหญ่ */
+        }
+    }
+    /* --- สไตล์สำหรับลิงก์ที่ยืดเต็มสไลด์ --- */
+    .stretched-link {
+        position: absolute;
+        /* ยืดให้เต็มขอบพ่อ (คือ .slider-item) */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* หรือใช้คำสั่งใหม่: inset: 0; */
+        
+        /* * วางไว้ที่ z-index: 1 
+        * (อยู่หน้า background-image แต่ "หลัง" .slider-content ที่มี z-index: 2) 
+        */
+        z-index: 1;
+        
+        /* ทำให้ลิงก์โปร่งใส */
+        background-color: transparent; 
+    }
+    /* --- Styles for Guide Page (guide.html) --- */
+
+    .guide-container {
+        padding: 20px 15px;
+        max-width: 800px;
+        margin: 20px auto;
+        text-align: center;
+    }
+
+    .guide-title {
+        font-size: 2.2em;
+        color: #28a745;
+        margin-bottom: 10px;
+    }
+
+    .guide-subtitle {
+        font-size: 1.2em;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+    .guide-steps-container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        margin-bottom: 40px;
+    }
+
+    .guide-step {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        padding: 25px;
+        display: flex;
+        flex-direction: column; /* Stack icon on top on mobile */
+        align-items: center;
+        text-align: center;
+        border: 1px solid #e0e0e0;
+    }
+
+    .step-icon {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+    }
+
+    .step-content h3 {
+        font-size: 1.4em;
+        color: #28a745;
+        margin-bottom: 10px;
+    }
+
+    .step-content p {
+        font-size: 1em;
+        color: #666;
+        line-height: 1.7;
+    }
+
+    .start-quiz-button {
+        font-size: 1.2em;
+        padding: 12px 25px;
+    }
+
+    /* Responsive for Guide Page */
+    @media (min-width: 768px) {
+        .guide-title {
+            font-size: 2.8em;
+        }
+        .guide-step {
+            flex-direction: row; /* Icon beside text on desktop */
+            text-align: left;
+            padding: 30px;
+        }
+        .step-icon {
+            font-size: 3em;
+            margin-bottom: 0;
+            margin-right: 25px;
+        }
+    }
+    /* --- [ใหม่] สไตล์สำหรับ Modal Logout --- */
+    
+
+    /* 1. พื้นหลังโปร่งใส (Overlay) */
+/* --- [ใหม่] สไตล์สำหรับ Modal Logout --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); 
+    z-index: 5000;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden; /* <-- ต้องเป็น 'hidden' นะครับ */
+}
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+/* ... (สไตล์ modal-box อื่นๆ) ... */
+
+    /* 3. กล่อง Modal (ตัวกล่องสีขาว) */
+    .modal-box {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        text-align: center;
+        max-width: 400px;
+        width: 90%; /* สำหรับมือถือ */
+        
+        /* Animation ตอนเปิด */
+        transform: scale(0.9);
+        transition: transform 0.2s ease-in-out;
+    }
+    .modal-overlay.show .modal-box {
+        transform: scale(1);
+    }
+
+    .modal-box h3 {
+        font-size: 1.8em;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .modal-box p {
+        font-size: 1.1em;
+        color: #666;
+        margin-bottom: 25px;
+    }
+
+    .modal-buttons {
+        display: flex;
+        flex-direction: column; /* ซ้อนกันบนมือถือ */
+        gap: 10px;
+    }
+
+    /* 4. สไตล์ปุ่ม "อันตราย" (สีแดง) */
+    .button.danger {
+        background-color: #dc3545; /* สีแดง */
+        color: white;
+    }
+    .button.danger:hover {
+        background-color: #c82333;
+    }
+
+    /* ทำให้ปุ่มเรียงกันบนจอใหญ่ */
+    @media (min-width: 768px) {
+        .modal-buttons {
+            flex-direction: row; /* เรียงแนวนอน */
+            justify-content: center;
+            gap: 15px;
+        }
+    }
+    /* --- [ใหม่] สไตล์สำหรับหน้า Profile (profile.html) --- */
+
+.profile-container {
+    padding: 20px 15px;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* ส่วนหัวโปรไฟล์ */
+.profile-header {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #e0e0e0;
+}
+
+.profile-avatar {
+    font-size: 4em;
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+#profile-username {
+    font-size: 2.2em;
+    color: #28a745;
+    font-weight: 700;
+}
+
+#profile-email-display {
+    font-size: 1.1em;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* ส่วนประวัติ */
+.history-section h2 {
+    font-size: 1.8em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.history-card {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* บนมือถือ */
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.history-date {
+    font-size: 0.9em;
+    color: #666;
+    font-weight: 700;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    width: 100%;
+}
+
+.history-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.history-aptitude {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #28a745;
+}
+
+.history-goal {
+    font-size: 1.0em;
+    color: #555;
+}
+
+.history-button {
+    padding: 5px 15px;
+    font-size: 0.9em;
+    width: 100%; /* บนมือถือ */
+}
+.history-button:disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.no-history {
+    text-align: center;
+    font-size: 1.1em;
+    color: #888;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+    .history-card {
+        flex-direction: row; /* แนวนอนบนจอใหญ่ */
+        align-items: center;
+        gap: 20px;
+    }
+    .history-date {
+        padding-bottom: 0;
+        border-bottom: none;
+        border-right: 1px solid #f0f0f0;
+        padding-right: 20px;
+        width: auto;
+    }
+    .history-button {
+        width: auto; /* ขนาดปุ่มปกติ */
+    }
+    .history-main {
+        flex-direction: row; /* แนวนอน */
+        align-items: center;
+        gap: 20px;
+    }
+}
+/* --- [ใหม่] Animation สำหรับการ์ด (Hover Effect) --- */
+
+/* ทำให้การ์ดลอยขึ้นมาเล็กน้อย เมื่อเมาส์ชี้ */
+.career-card,
+.answer-card,
+.field-card,
+.history-card {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.career-card:hover,
+.answer-card:hover,
+.field-card:hover,
+.history-card:hover {
+    transform: translateY(-5px); /* ลอยขึ้น 5px */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1); /* เพิ่มเงา */
+}
+
+/* กันบัค: ไม่ต้องใช้ Hover Effect กับการ์ดที่ "เลือกแล้ว" */
+.answer-card.selected:hover {
+    transform: none;
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.3); /* ใช้เงาเดิม */
+}
+/* --- [ใหม่] สไตล์สำหรับกล่องประเมิน (Feedback Box) --- */
+
+.feedback-box {
+    background-color: #f8f9fa; /* สีเทาอ่อน */
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    margin-top: 40px; /* เว้นระยะห่างจากเนื้อหาด้านบน */
+}
+
+.feedback-box h3 {
+    font-size: 1.6em;
+    color: #28a745; /* สีเข้ม ไม่ใช่สีแบรนด์ */
+    margin-bottom: 10px;
+}
+
+.feedback-box p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 20px;
+    max-width: 500px; /* ไม่ให้ข้อความยาวไป */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* เราใช้ .button.primary ที่มีอยู่แล้ว แต่ปรับขนาดนิดหน่อย */
+.feedback-box .feedback-button {
+    font-size: 1.1em;
+    /* (คุณสามารถเปลี่ยนสีได้ถ้าต้องการ เช่น .button.secondary) */
+}
+/* --- [ใหม่] สไตล์สำหรับ Admin Panel (admin-panel.html) --- */
+
+.admin-container {
+    padding: 20px 15px;
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+.admin-container h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #28a745;
+    margin-bottom: 30px;
+}
+
+.user-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.user-card {
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* บนมือถือ */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.user-info {
+    font-size: 1.1em;
+    color: #333;
+}
+.user-info strong {
+    color: #000;
+}
+
+.user-actions {
+    display: flex;
+    gap: 10px;
+    width: 100%; /* บนมือถือ */
+}
+
+/* สร้างคลาส .small สำหรับปุ่มในหน้าแอดมิน */
+.button.small {
+    padding: 5px 12px;
+    font-size: 0.9em;
+}
+.user-actions .button {
+    flex-grow: 1; /* ทำให้ปุ่มขยายเท่ากัน */
+}
+
+
+@media (min-width: 768px) {
+    .user-card {
+        flex-direction: row; /* แนวนอนบนจอใหญ่ */
+        align-items: center;
+    }
+    .user-actions {
+        width: auto;
+    }
+    .user-actions .button {
+        flex-grow: 0;
+    }
+}
+/* --- [ใหม่] สไตล์สำหรับปุ่มสลับภาษา (Lang Switcher) --- */
+
+.lang-switcher {
+    display: flex;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    padding: 3px;
+    border: 1px solid #ddd;
+    
+    /* (จัดให้อยู่กลาง Header - อาจจะต้องปรับ) */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.lang-btn {
+    background-color: transparent;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 18px;
+    font-size: 0.9em;
+    font-weight: 700;
+    cursor: pointer;
+    color: #888;
+}
+
+.lang-btn.active {
+    background-color: #fff;
+    color: #28a745;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* (ปรับตำแหน่งปุ่ม เมื่ออยู่บนจอใหญ่) */
+@media (min-width: 768px) {
+    .lang-switcher {
+        position: static; /* กลับเป็นปกติ */
+        transform: none;
+        order: -1; /* (ย้ายไปอยู่ก่อน Logo ถ้าต้องการ) */
+        margin-left: 20px;
+    }
+    .navbar {
+        position: relative; /* (จำเป็น ถ้ายังใช้ absolute) */
+    }
+}
+
+/* (ปรับตำแหน่งปุ่ม เมื่ออยู่ในหน้า Login/Result) */
+.login-page-body .logo-center,
+.result-page-body .logo-center {
+    /* (ต้องปรับเล็กน้อย ถ้ามีปุ่มภาษา) */
+    flex-grow: 0.5; /* ลดขนาดลงหน่อย */
+}
+}

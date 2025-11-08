@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Edu Match</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page-body">
+    
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="index.html" class="back-button">&larr; กลับหน้าหลัก</a>
+            <div class="logo-center">Edu Match (Admin)</div>
+            <div></div>
+        </nav>
+    </header>
+
+    <main class="login-container">
+        <h1 class="login-title">สำหรับผู้ดูแลระบบ</h1>
+        
+        <form class="login-form" id="admin-login-form">
+            <div class="form-group">
+                <label for="password">รหัสผ่านผู้ดูแล</label>
+                <input type="password" id="admin-password" placeholder="กรอกรหัสผ่าน" required>
+            </div>
+            <button type="submit" class="button primary login-button">เข้าสู่ระบบ</button>
+            <p id="admin-error-msg" style="color: red; text-align: center; margin-top: 10px;"></p>
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('admin-login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const pass = document.getElementById('admin-password').value;
+            const errorMsg = document.getElementById('admin-error-msg');
+            
+            // นี่คือ "รหัสผ่านจำลอง" ที่เราฝังไว้
+            if (pass === 'admin1234') {
+                // ถ้าถูก ให้ไปหน้า Panel
+                window.location.href = 'admin-panel.html';
+            } else {
+                // ถ้าผิด
+                errorMsg.textContent = 'รหัสผ่านไม่ถูกต้อง!';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครสมาชิก - Edu Match</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page-body"> 
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="index.html" class="back-button" aria-label="Go back">
+                &larr; home
+            </a>
+            <div class="logo-center">Edu Match</div>
+            <div class="lang-switcher">
+                <button id="lang-switcher-th" class="lang-btn active">TH</button>
+                <button id="lang-switcher-en" class="lang-btn">EN</button>
+            </div>
+            <div></div> 
+        </nav>
+    </header>
+
+    <main class="login-container">
+        <h1 class="login-title">สร้างบัญชี</h1>
+        <form class="login-form">
+            
+            <div class="form-group">
+                <label for="email">อีเมล</label>
+                <input type="email" id="email" name="email" placeholder="กรอกอีเมลของคุณ" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">รหัสผ่าน</label>
+                <input type="password" id="password" name="password" placeholder="อย่างน้อย 8 ตัวอักษร" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirm-password">ยืนยันรหัสผ่าน</label>
+                <input type="password" id="confirm-password" name="confirm_password" placeholder="กรอกรหัสผ่านอีกครั้ง" required>
+            </div>
+            
+            <button type="submit" class="button primary login-button">สมัครสมาชิก</button>
+            
+            <div class="switch-form-link">
+                <p>มีบัญชีอยู่แล้ว?</p>
+                <a href="login.html" class="button secondary register-button">เข้าสู่ระบบที่นี่</a>
+            </div>
+        </form>
+    </main>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const registerForm = document.querySelector('.login-form');
+            const emailInput = document.getElementById('email');
+
+            if (registerForm && emailInput) {
+                registerForm.addEventListener('submit', (e) => {
+                    e.preventDefault(); 
+                    
+                    const email = emailInput.value;
+
+                    if (email.trim() === '') {
+                        alert('กรุณากรอกอีเมล');
+                        return;
+                    }
+                    
+                    // ดึง "ชื่อ" จากอีเมล (เช่น "test@gmail.com" -> "test")
+                    const username = email.split('@')[0];
+
+                    // *** นี่คือการจำลองการล็อกอิน ***
+                    localStorage.setItem('loggedInUser', username);
+
+                    // ส่งผู้ใช้กลับไปหน้าหลัก
+                    alert('สมัครสมาชิกสำเร็จ! ยินดีต้อนรับ, ' + username);
+                    window.location.href = 'index.html';
+                });
+            }
+        });
+    </script>
+    </body>
+</html>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผลการวิเคราะห์ - Edu Match</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="result-page-body">
+    
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="index.html" class="back-button">&larr; กลับหน้าหลัก</a>
+            <div class="logo-center">Edu Match</div>
+            <div class="lang-switcher">
+                <button id="lang-switcher-th" class="lang-btn active">TH</button>
+                <button id="lang-switcher-en" class="lang-btn">EN</button>
+            </div>
+            <div></div>
+        </nav>
+    </header>
+
+    <main class="result-container">
+        
+        <section id="summary-card" class="summary-card">
+            <h1 id="result-title">กำลังประมวลผล...</h1>
+            <p id="result-description">...</p>
+        </section>
+
+        <section id="match-analysis" class="match-analysis">
+            <h2 id="match-title">...</h2>
+            <p id="match-insight">...</p>
+        </section>
+
+        <section class="result-tabs">
+            <div class="tab-nav">
+                <button class="tab-link active" data-tab="tab-goal">🚀 เส้นทางสู่เป้าหมาย</button>
+                <button class="tab-link" data-tab="tab-aptitude">💡 เส้นทางตามความถนัด</button>
+            </div>
+            
+            <div id="tab-goal" class="tab-content active">
+                <h4>อาชีพที่แนะนำ</h4>
+                <div class="career-recommendations" id="goal-career-recs">
+                    </div>
+                <h3 id="goal-career-title">...</h3>
+                <div id="goal-fields-accordion" class="accordion">
+                    </div>
+            </div>
+            
+            <div id="tab-aptitude" class="tab-content">
+                <h4>อาชีพที่แนะนำ</h4>
+                <div class="career-recommendations" id="aptitude-career-recs">
+                    </div>
+                <h3 id="aptitude-career-title">...</h3>
+                <div id="aptitude-fields-accordion" class="accordion">
+                    </div>
+            </div>
+        </section>
+
+        <section class="save-result-cta" id="save-result-box" style="display: none;"> <h3>ชอบผลลัพธ์นี้ใช่ไหม?</h3>
+            <p>สร้างบัญชี (ฟรี) เพื่อทำแบบทดสอบขั้นสูง และบันทึกผลวิเคราะห์นี้ไว้ในโปรไฟล์ของคุณ!</p>
+            <div class="cta-buttons">
+                <a href="register.html" class="button primary">สมัครสมาชิกเพื่อบันทึก</a>
+                <a href="login.html" class="button secondary">มีบัญชีแล้ว? เข้าสู่ระบบ</a>
+            </div>
+        </section>
+
+    </main> 
+
+    
+    <script src="result.js"></script>
+</body>
+</html>

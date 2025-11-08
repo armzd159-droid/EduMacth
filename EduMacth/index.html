@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edu Match</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="navbar">
+            <button class="menu-toggle" aria-label="Open menu">
+                ☰
+            </button>
+            <div class="logo">Edu Match</div>
+            <div class="lang-switcher">
+                <button id="lang-switcher-th" class="lang-btn active">TH</button>
+                <button id="lang-switcher-en" class="lang-btn">EN</button>
+            </div>
+            <div class="nav-icons">
+                <a href="#" id="username-link" class="nav-icon-link">
+                    <div class="username-display" id="username-display">
+                        ยังไม่มีบัญชีผู้ใช้ 
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/hostcool_/" target="_blank" id="chat-link" class="nav-icon-link" aria-label="ติดต่อเรา">
+                    💬
+                </a>
+                <a href="login.html" id="profile-link" class="nav-icon-link" aria-label="Profile">
+                    👤
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="hero-slider">
+            <div class="slider-container">
+                <div class="slider-item slide-1 active">
+                    <a href="quiz.html" class="stretched-link" aria-label="ไปหน้าแบบทดสอบ"></a>
+                    </div>
+                <div class="slider-item slide-2">
+                    <a href="quiz.html" class="stretched-link" aria-label="ไปหน้าแบบทดสอบ"></a>
+                    </div>
+                <div class="slider-item slide-3">
+                    <a href="quiz.html" class="stretched-link" aria-label="ไปหน้าแบบทดสอบ"></a>
+                    </div>
+            </div>
+            <div class="slider-pagination">
+                <span class="dot active"></span>
+                <span class="dot "></span>
+                <span class="dot "></span> 
+            </div>
+        </section>
+
+        <section class="call-to-action-section">
+            <h2 class="section-title">เริ่มต้นเส้นทางอาชีพในฝันของคุณ</h2>
+            <p class="section-description">ทำแบบทดสอบเพื่อค้นหาความถนัด หรือสำรวจอาชีพต่างๆ</p>
+            <div class="cta-buttons">
+                <a href="quiz.html" class="button primary">เริ่มทำแบบทดสอบเลย</a>
+                <a href="guide.html" class="button secondary">คู่มือการใช้งาน</a>
+            </div>
+        </section>
+
+        <section class="featured-careers-section">
+            <h2 class="section-title">อาชีพที่กำลังเป็นที่ต้องการ</h2>
+            <div class="career-cards-container">
+                <div class="career-card">
+                    <h3>นักพัฒนา AI</h3>
+                    <p>สร้างระบบอัจฉริยะแห่งอนาคต</p>
+                    <a href="https://vt.tiktok.com/ZSy5EnSFD/" class="card-link">ดูรายละเอียด</a>
+                </div>
+                <div class="career-card">
+                    <h3>นักการตลาดดิจิทัล</h3>
+                    <p>สร้างแบรนด์ให้เป็นที่รู้จักบนโลกออนไลน์</p>
+                    <a href="https://vt.tiktok.com/ZSy5Ex9p8/" class="card-link">ดูรายละเอียด</a>
+                </div>
+                <div class="career-card">
+                    <h3>นักออกแบบ UX/UI</h3>
+                    <p>ออกแบบประสบการณ์ผู้ใช้ที่ดีที่สุด</p>
+                    <a href="https://vt.tiktok.com/ZSy5EtS7n/" class="card-link">ดูรายละเอียด</a>
+                </div>
+                </div>
+        </section>
+        </section> <section class="feedback-box">
+            <h3> ช่วยเราพัฒนาให้ดีขึ้น</h3>
+            <p>สละเวลาสักครู่ ทำแบบประเมินความพึงพอใจ </p>
+            
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfz7ZHGNui9Fj3kwUBhWKAnGfZDFQn2I20nBhY0VhFOo8WNAQ/viewform" target="_blank" class="button primary feedback-button">
+                ทำแบบประเมิน
+            </a>
+        </section>
+        </main> <aside class="side-menu">
+    </main>
+
+    <aside class="side-menu">
+        <button class="close-menu">X</button>
+        <ul>
+            <li><a href="#">หน้าหลัก</a></li>
+            <li><a href="#">ทำแบบทดสอบ</a></li>
+            <li><a href="#">ค้นหาอาชีพ</a></li>
+            <li><a href="#">บันทึกของฉัน</a></li>
+            <li id="login-menu-link"><a href="login.html">เข้าสู่ระบบ / สมัครสมาชิก</a></li>
+        </ul>
+    </aside>
+    <div class="overlay"></div> <script src="script.js"></script>
+    <script src="script.js"></script> 
+
+    <div class="modal-overlay" id="logout-overlay">
+        <div class="modal-box" id="logout-modal">
+            <h3>ออกจากระบบ</h3>
+            <p>คุณแน่ใจหรือไม่ว่าต้องการออกจากระบบ?</p>
+            <div class="modal-buttons">
+                <button class="button secondary" id="logout-cancel-btn">ยกเลิก</button>
+                <button class="button danger" id="logout-confirm-btn">ยืนยัน ออกจากระบบ</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Edu Match</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="result-page-body"> <header class="main-header">
+        <nav class="navbar">
+            <a href="index.html" class="back-button">&larr; กลับหน้าหลัก</a>
+            <div class="logo-center">Admin Panel</div>
+            <div></div>
+        </nav>
+    </header>
+
+    <main class="admin-container">
+        <h1>จัดการผู้ใช้งาน (จำลอง)</h1>
+        
+        <div class="user-list-container">
+            <div class="user-card" id="user-1">
+                <div class="user-info">
+                    <strong>test01@gmail.com</strong> (ล็อกอินล่าสุด: 1 วันก่อน)
+                </div>
+                <div class="user-actions">
+                    <button class="button secondary small" onclick="viewHistory('test01@gmail.com')">ดูประวัติ (ปลอม)</button>
+                    <button class="button danger small" onclick="deleteUser('user-1', 'test01@gmail.com')">ลบบัญชี</button>
+                </div>
+            </div>
+
+            <div class="user-card" id="user-2">
+                <div class="user-info">
+                    <strong>suspicious_user@gmail.com</strong> (ล็อกอินล่าสุด: 2 ชั่วโมงก่อน)
+                </div>
+                <div class="user-actions">
+                    <button class="button secondary small" onclick="viewHistory('suspicious_user')">ดูประวัติ (ปลอม)</button>
+                    <button class="button danger small" onclick="deleteUser('user-2', 'suspicious_user')">ลบบัญชี</button>
+                </div>
+            </div>
+
+             <div class="user-card" id="user-3">
+                <div class="user-info">
+                    <strong>lisa_test@gmail.com</strong> (ล็อกอินล่าสุด: 3 วันก่อน)
+                </div>
+                <div class="user-actions">
+                    <button class="button secondary small" onclick="viewHistory('lisa_test')">ดูประวัติ (ปลอม)</button>
+                    <button class="button danger small" onclick="deleteUser('user-3', 'lisa_test')">ลบบัญชี</button>
+                </div>
+            </div>
+            
+        </div>
+    </main> 
+
+    <script>
+        // "ฟังก์ชันจำลอง" การลบ
+        function deleteUser(cardId, username) {
+            if (confirm(`(จำลอง) คุณแน่ใจหรือไม่ว่าต้องการลบบัญชี: ${username}?`)) {
+                // 1. ลบการ์ดนั้นออกจากหน้าจอ
+                document.getElementById(cardId).remove();
+                
+                // 2. แจ้งเตือน
+                alert(`(จำลอง) ลบบัญชี ${username} ออกจากระบบแล้ว!`);
+            }
+        }
+
+        // "ฟังก์ชันจำลอง" การดูประวัติ
+        function viewHistory(username) {
+            alert(`(จำลอง) กำลังเปิดดูประวัติของ ${username}\n\n[ข้อมูลปลอม]\n- ครั้งที่ 1: สาย R (ชุดเล็ก)\n- ครั้งที่ 2: สาย I (ชุดเต็ม)`);
+        }
+    </script>
+</body>
+</html>
