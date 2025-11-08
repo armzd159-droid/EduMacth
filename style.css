@@ -24,7 +24,7 @@
 .result-container, 
 .guide-container,
 .profile-container {
-    animation: fadeIn 0.5s ease-out;
+    animation: fadeIn 0.8s ease-out;
 }
 
 /* ------------------------------------------------------ */
@@ -1496,33 +1496,34 @@ a:hover {
     /* (ต้องปรับเล็กน้อย ถ้ามีปุ่มภาษา) */
     flex-grow: 0.5; /* ลดขนาดลงหน่อย */
 }
-/* --- [ใหม่] Responsive Patch (ฉบับอัปเดต) สำหรับจอมือถือ --- */
+/* --- [ใหม่ V5] Responsive Patch (ฉบับ "คงการ์ดไว้") --- */
 /* (โค้ดนี้จะทำงาน "เฉพาะ" เมื่อจอกว้างน้อยกว่า 768px) */
 @media (max-width: 768px) {
 
-    /* --- 1. แก้ Header (Navbar) --- */
+    /* --- 1. Base & Header --- */
     .navbar {
         padding: 10px 15px;
+        flex-wrap: wrap; 
     }
-    
-    /* [แก้!] ลดขนาดโลโก้หน้าแรก */
     .navbar .logo {
-        font-size: 1.3em; 
-        font-weight: 700;
-        text-align: left;
+        font-size: 1.3em;
     }
-
+    .navbar .logo-center {
+        font-size: 1.1em; 
+        position: static;
+        transform: none;
+        flex-grow: 1;
+        text-align: center;
+    }
     .nav-icons {
-        gap: 8px; /* ลดช่องว่างระหว่างไอคอน */
+        gap: 8px; 
     }
     .username-display {
-        max-width: 80px; /* จำกัดความกว้างของชื่อ */
-        white-space: nowrap; 
-        overflow: hidden; 
-        text-overflow: ellipsis; 
+        max-width: 80px; 
+        font-size: 0.6em;
     }
     .nav-icon-link {
-        font-size: 20px; /* ลดขนาดไอคอน 💬 👤 */
+        font-size: 20px; 
         padding: 3px;
     }
     .lang-switcher {
@@ -1535,20 +1536,9 @@ a:hover {
         padding: 3px 8px;
         font-size: 0.8em;
     }
-
-    /* --- 2. แก้ Header ในหน้าอื่นๆ (Quiz, Result) --- */
-    .navbar .back-button {
-        font-size: 0.9em;
-        padding: 5px;
-        white-space: nowrap; 
-    }
-    .navbar .logo-center {
-        font-size: 1.1em; 
-        margin: 0 5px;
-        text-align: center;
-    }
-
-    /* --- 3. แก้ Container หลัก (ไม่ให้ข้อความชิดขอบ) --- */
+    
+    /* --- 2. Main Containers --- */
+    /* [แก้!] เราจะ "คง" กล่องไว้ และเพิ่ม Padding */
     .main-content,
     .result-container,
     .quiz-container,
@@ -1557,11 +1547,18 @@ a:hover {
     .login-container,
     .admin-container {
         padding: 15px; 
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin: 10px auto;
+        /* (เราจะไม่ลบ "เงา" หรือ "พื้นหลัง" จากสไตล์คอม) */
+    }
+    /* (ยกเว้น Login/Register ให้เต็มจอ) */
+    .login-container {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        height: calc(100vh - 60px); /* (เต็มจอ) */
     }
 
-    /* --- 4. แก้หน้า Home --- */
+    /* --- 3. Home Page --- */
     .hero-slider h1 {
         font-size: 2em; 
     }
@@ -1571,6 +1568,13 @@ a:hover {
     .section-title {
         font-size: 1.6em; 
     }
+    .call-to-action-section .cta-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .button {
+        width: 100%; /* (ปุ่มเต็มจอ) */
+    }
     .career-card-container {
         flex-direction: column; 
         gap: 15px;
@@ -1579,81 +1583,93 @@ a:hover {
         width: 100%; 
     }
 
-    /* --- 5. [แก้!] หน้า Quiz (คืนชีพกล่องคำถาม) --- */
+    /* --- 4. Quiz Page --- */
+    /* [แก้!] เราจะ "คง" กล่องของ .quiz-container ไว้ */
+    .quiz-container {
+        padding: 15px;
+        /* (เราจะไม่ลบ "เงา" หรือ "พื้นหลัง" จากสไตล์คอม) */
+    }
     .quiz-question-container {
-        background-color: #fff; /* << คืนชีพพื้นหลัง */
         padding: 20px 15px;
-        border-radius: 10px; /* << คืนชีพขอบมน */
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* << คืนชีพเงา */
-        margin-bottom: 25px;
+        margin-bottom: 15px;
+        /* (สไตล์กล่องจะมาจาก .quiz-question-container ด้านบน) */
     }
     #question-text {
         font-size: 1.2em;
     }
-    
-    /* (ส่วน .answer-card เราแก้ใน "โค้ดมาสเตอร์" ไปแล้ว) */
-
+    .answer-card {
+        padding: 15px;
+        font-size: 1em;
+        text-align: center;
+    }
     .quiz-navigation {
         flex-direction: column; 
         gap: 10px;
     }
-    .quiz-navigation .button {
-        width: 100%; 
-    }
 
-    /* --- 6. [แก้!] หน้า Result (ปรับฟอนต์และ Layout) --- */
+    /* --- 5. Result Page --- */
+    /* [แก้!] เราจะ "คง" กล่องของ .result-container ไว้ */
+    .result-container {
+        gap: 15px;
+    }
     .summary-card,
     .match-analysis,
     .result-tabs,
-    .save-result-cta {
+    .save-result-cta,
+    .feedback-box {
         padding: 20px 15px; 
-        border-radius: 10px; /* เพิ่มขอบมนให้การ์ด */
     }
-    
-    /* (ปรับขนาดฟอนต์) */
-    .result-container #result-title {
+    #result-title {
         font-size: 1.5em;
     }
-     .result-container #result-description {
+    #result-description {
         font-size: 1em;
     }
-    .match-analysis #match-title {
+    #match-title {
         font-size: 1.3em;
     }
     .career-tag {
-        font-size: 0.9em; /* ลดขนาดแท็กอาชีพ */
+        font-size: 0.9em; 
     }
-
     .tab-nav {
-        flex-direction: column; /* ทำให้ปุ่มแท็บเรียงแนวตั้ง */
+        flex-direction: column; 
     }
     .tab-link {
         width: 100%;
         text-align: center;
     }
-
-    .field-card {
-        background-color: #fff;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
     .field-card-header {
         font-size: 1.1em;
-        font-weight: 700;
-        padding: 15px;
-        background-color: #f9f9f9;
     }
-    .field-card-content {
-        padding: 15px;
+
+    /* --- 6. Profile Page --- */
+    .profile-header,
+    .history-section {
+        padding: 20px 15px;
     }
-    .field-card-content h4 {
-        font-size: 1em;
-        color: #333;
+    .history-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
-    .field-card-content ul {
-        padding-left: 20px; 
-        margin-top: 10px;
+    .history-main {
+        order: 1;
+    }
+    .history-card .button {
+        order: 2;
+        width: 100%;
+    }
+
+    /* --- 7. Admin Page --- */
+    .user-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .user-actions {
+        width: 100%;
+    }
+    .user-actions .button {
+        flex: 1;
     }
 } /* --- [สำคัญ] นี่คือ "ปีกกาปิด" ของ @media --- */
 }
