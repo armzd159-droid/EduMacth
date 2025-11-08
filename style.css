@@ -1496,4 +1496,164 @@ a:hover {
     /* (ต้องปรับเล็กน้อย ถ้ามีปุ่มภาษา) */
     flex-grow: 0.5; /* ลดขนาดลงหน่อย */
 }
+/* --- [ใหม่] Responsive Patch (ฉบับอัปเดต) สำหรับจอมือถือ --- */
+/* (โค้ดนี้จะทำงาน "เฉพาะ" เมื่อจอกว้างน้อยกว่า 768px) */
+@media (max-width: 768px) {
+
+    /* --- 1. แก้ Header (Navbar) --- */
+    .navbar {
+        padding: 10px 15px;
+    }
+    
+    /* [แก้!] ลดขนาดโลโก้หน้าแรก */
+    .navbar .logo {
+        font-size: 1.3em; 
+        font-weight: 700;
+        text-align: left;
+    }
+
+    .nav-icons {
+        gap: 8px; /* ลดช่องว่างระหว่างไอคอน */
+    }
+    .username-display {
+        max-width: 80px; /* จำกัดความกว้างของชื่อ */
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+    }
+    .nav-icon-link {
+        font-size: 20px; /* ลดขนาดไอคอน 💬 👤 */
+        padding: 3px;
+    }
+    .lang-switcher {
+        position: static;
+        transform: none;
+        margin: 0;
+        padding: 2px;
+    }
+    .lang-btn {
+        padding: 3px 8px;
+        font-size: 0.8em;
+    }
+
+    /* --- 2. แก้ Header ในหน้าอื่นๆ (Quiz, Result) --- */
+    .navbar .back-button {
+        font-size: 0.9em;
+        padding: 5px;
+        white-space: nowrap; 
+    }
+    .navbar .logo-center {
+        font-size: 1.1em; 
+        margin: 0 5px;
+        text-align: center;
+    }
+
+    /* --- 3. แก้ Container หลัก (ไม่ให้ข้อความชิดขอบ) --- */
+    .main-content,
+    .result-container,
+    .quiz-container,
+    .guide-container,
+    .profile-container,
+    .login-container,
+    .admin-container {
+        padding: 15px; 
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* --- 4. แก้หน้า Home --- */
+    .hero-slider h1 {
+        font-size: 2em; 
+    }
+    .hero-slider p {
+        font-size: 1.1em;
+    }
+    .section-title {
+        font-size: 1.6em; 
+    }
+    .career-card-container {
+        flex-direction: column; 
+        gap: 15px;
+    }
+    .career-card {
+        width: 100%; 
+    }
+
+    /* --- 5. [แก้!] หน้า Quiz (คืนชีพกล่องคำถาม) --- */
+    .quiz-question-container {
+        background-color: #fff; /* << คืนชีพพื้นหลัง */
+        padding: 20px 15px;
+        border-radius: 10px; /* << คืนชีพขอบมน */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* << คืนชีพเงา */
+        margin-bottom: 25px;
+    }
+    #question-text {
+        font-size: 1.2em;
+    }
+    
+    /* (ส่วน .answer-card เราแก้ใน "โค้ดมาสเตอร์" ไปแล้ว) */
+
+    .quiz-navigation {
+        flex-direction: column; 
+        gap: 10px;
+    }
+    .quiz-navigation .button {
+        width: 100%; 
+    }
+
+    /* --- 6. [แก้!] หน้า Result (ปรับฟอนต์และ Layout) --- */
+    .summary-card,
+    .match-analysis,
+    .result-tabs,
+    .save-result-cta {
+        padding: 20px 15px; 
+        border-radius: 10px; /* เพิ่มขอบมนให้การ์ด */
+    }
+    
+    /* (ปรับขนาดฟอนต์) */
+    .result-container #result-title {
+        font-size: 1.5em;
+    }
+     .result-container #result-description {
+        font-size: 1em;
+    }
+    .match-analysis #match-title {
+        font-size: 1.3em;
+    }
+    .career-tag {
+        font-size: 0.9em; /* ลดขนาดแท็กอาชีพ */
+    }
+
+    .tab-nav {
+        flex-direction: column; /* ทำให้ปุ่มแท็บเรียงแนวตั้ง */
+    }
+    .tab-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    .field-card {
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    .field-card-header {
+        font-size: 1.1em;
+        font-weight: 700;
+        padding: 15px;
+        background-color: #f9f9f9;
+    }
+    .field-card-content {
+        padding: 15px;
+    }
+    .field-card-content h4 {
+        font-size: 1em;
+        color: #333;
+    }
+    .field-card-content ul {
+        padding-left: 20px; 
+        margin-top: 10px;
+    }
+} /* --- [สำคัญ] นี่คือ "ปีกกาปิด" ของ @media --- */
 }
