@@ -5,7 +5,6 @@
     padding: 0;
 }
 
-body {/* --- [ใหม่] Animation สำหรับ Fade-in --- */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -17,6 +16,7 @@ body {/* --- [ใหม่] Animation สำหรับ Fade-in --- */
     }
 }
 
+body {/* --- [ใหม่] Animation สำหรับ Fade-in --- */
 /* สั่งให้ "main" ของทุกหน้าใช้ Animation นี้ */
 .main-content, 
 .login-container, 
@@ -86,10 +86,48 @@ a:hover {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 1200px; /* Limit width on larger screens */
-    margin: 0 auto;
+    justify-content: space-between; /* กระจายองค์ประกอบ */
+    padding: 10px 15px; /* เพิ่ม Padding ด้านข้าง */
+    background-color: #28a745;
+    color: white;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+/* [ใหม่] สำหรับมือถือ (จอกว้างไม่เกิน 767px) */
+@media (max-width: 767px) {
+    .navbar {
+        flex-wrap: wrap; /* ถ้าเนื้อหาเยอะ ให้ขึ้นบรรทัดใหม่ */
+        padding: 10px 10px; /* ลด padding ด้านข้างนิดหน่อย */
+    }
+    .navbar .logo {
+        flex-basis: 100%; /* ให้ Logo อยู่คนเดียวบรรทัดบน */
+        text-align: center;
+        margin-bottom: 5px; /* เว้นระยะจากบรรทัดล่าง */
+    }
+    .lang-switcher {
+        order: 1; /* ให้ปุ่มภาษาอยู่ด้านซ้ายสุดของบรรทัดที่ 2 */
+    }
+    .nav-icons {
+        order: 2; /* ให้ไอคอนอยู่ด้านขวาสุดของบรรทัดที่ 2 */
+        gap: 5px; /* ลดช่องว่างระหว่างไอคอน */
+    }
+    .back-button { /* ปุ่มกลับ (เช่นหน้า Login/Quiz) */
+        font-size: 0.9em;
+        padding: 5px;
+    }
+    .logo-center { /* สำหรับหน้า Login/Quiz ที่มี back button */
+        flex-grow: 1; /* ขยายให้เต็มพื้นที่ */
+        text-align: center;
+    }
+    /* ซ่อน Hamburger menu ในหน้าหลัก ถ้าเราจะไม่มี sidebar */
+    .navbar .menu-toggle {
+        display: none; 
+    }
 }
 
 .menu-toggle, .close-menu {
@@ -155,9 +193,16 @@ a:hover {
 
 /* Main Content */
 .main-content {
-    padding: 20px 15px;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 20px 15px; /* เพิ่ม padding ด้านข้าง */
+    max-width: 1000px; /* เพิ่มความกว้างสูงสุด */
+    margin: 20px auto;
+}
+
+/* [ใหม่] ปรับสำหรับมือถือ */
+@media (max-width: 767px) {
+    .main-content {
+        padding: 15px 10px; /* ลด padding ด้านข้างอีกนิดสำหรับมือถือ */
+    }
 }
 
 /* Hero Slider */
@@ -244,9 +289,11 @@ a:hover {
 }
 
 .section-description {
-    font-size: 1em;
+    font-size: 1.1em;
     color: #555;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 25px; /* เพิ่มระยะห่างด้านล่าง */
+    line-height: 1.6; /* เพิ่มระยะห่างบรรทัด */
 }
 
 .cta-buttons {
@@ -400,13 +447,25 @@ a:hover {
 }
 
 
-.login-container {
-    flex-grow: 1; /* Make container take available space */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: center; /* Center horizontally */
-    padding: 20px;
+.login-container,
+.admin-container { /* อันนี้ใช้กับ admin-panel.html ด้วย */
+    padding: 30px 20px; /* เพิ่ม padding */
+    max-width: 500px; /* ลด max-width สำหรับหน้า Login/Register/Admin ให้ไม่กว้างไป */
+    margin: 30px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* [ใหม่] ปรับสำหรับมือถือ */
+@media (max-width: 767px) {
+    .login-container,
+    .admin-container {
+        padding: 20px 15px; /* ลด padding สำหรับมือถือ */
+        margin: 15px auto;
+        box-shadow: none; /* ไม่มีเงาบนมือถือให้ดูคลีนขึ้น */
+        border-radius: 0; /* ไม่มีมุมโค้งบนมือถือ */
+    }
 }
 
 .login-title {
@@ -664,6 +723,32 @@ a:hover {
         margin-bottom: 25px;
         text-align: center;
     }
+    .quiz-question-container {
+    background-color: #fff;
+    padding: 30px 20px; /* เพิ่ม padding ด้านข้าง */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 25px;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 10px; /* เพิ่ม padding ด้านข้างเล็กน้อย */
+}
+
+/* [ใหม่] สำหรับมือถือ */
+@media (max-width: 767px) {
+    .quiz-question-container {
+        padding: 20px 15px; /* ลด padding สำหรับมือถือ */
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .quiz-options {
+        padding: 0 5px; /* ลด padding สำหรับมือถือ */
+    }
+}
     #question-number { font-size: 1em; color: #666; margin-bottom: 10px; }
     #question-text { font-size: 1.5em; font-weight: 700; color: #333; }
 
@@ -690,18 +775,22 @@ a:hover {
     }
 
     .quiz-navigation {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 30px;
-        border-top: 1px solid #eee;
-        padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 15px; /* เพิ่มช่องว่างระหว่างปุ่ม */
+}
+
+/* [ใหม่] สำหรับมือถือ */
+@media (max-width: 767px) {
+    .quiz-navigation {
+        flex-direction: column; /* เรียงปุ่มแนวตั้ง */
+        gap: 10px; /* ลดช่องว่าง */
     }
-    .quiz-navigation button:disabled {
-        background-color: #ccc;
-        border-color: #ccc;
-        color: #888;
-        cursor: not-allowed;
+    .quiz-navigation .button {
+        width: 100%; /* ให้ปุ่มขยายเต็มความกว้าง */
     }
+}
 
     /* --- Result Page Styles --- */
     .result-page-body { background-color: #f4f7f6; }
@@ -1340,5 +1429,157 @@ a:hover {
 .result-page-body .logo-center {
     /* (ต้องปรับเล็กน้อย ถ้ามีปุ่มภาษา) */
     flex-grow: 0.5; /* ลดขนาดลงหน่อย */
+}
+/* --- [ใหม่] Responsive Patch สำหรับจอมือถือ --- */
+@media (max-width: 768px) {
+
+    /* --- 1. แก้ Header (Navbar) ที่พัง --- */
+    .navbar {
+        padding: 10px 15px;
+        /* (ถ้าปุ่มยังล้น ให้ลองเอา lang-switcher ออก) */
+    }
+
+    .nav-icons {
+        gap: 8px; /* ลดช่องว่างระหว่างไอคอน */
+    }
+    .username-display {
+        max-width: 80px; /* จำกัดความกว้างของชื่อ */
+        white-space: nowrap; /* ไม่ให้ขึ้นบรรทัดใหม่ */
+        overflow: hidden; /* ซ่อนส่วนที่ล้น */
+        text-overflow: ellipsis; /* ... ถ้าชื่อยาวไป */
+    }
+    .nav-icon-link {
+        font-size: 20px; /* ลดขนาดไอคอน 💬 👤 */
+        padding: 3px;
+    }
+    .lang-switcher {
+        position: static;
+        transform: none;
+        margin: 0;
+        padding: 2px;
+    }
+    .lang-btn {
+        padding: 3px 8px;
+        font-size: 0.8em;
+    }
+
+    /* --- 2. แก้ Header ในหน้าอื่นๆ (Quiz, Result) --- */
+    .navbar .back-button {
+        font-size: 0.9em;
+        padding: 5px;
+        white-space: nowrap; /* ไม่ให้ "กลับหน้าหลัก" ตกบรรทัด */
+    }
+    .navbar .logo-center {
+        font-size: 1.1em; /* ลดขนาดโลโก้กลาง */
+        margin: 0 5px;
+        text-align: center;
+    }
+
+    /* --- 3. แก้ Container หลัก (ไม่ให้ข้อความชิดขอบ) --- */
+    .main-content,
+    .result-container,
+    .quiz-container,
+    .guide-container,
+    .profile-container,
+    .login-container,
+    .admin-container {
+        padding: 15px; /* << นี่คือตัวแก้ "ข้อความชิดขอบ" */
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    /* --- 4. แก้หน้า Home (รูป 1) --- */
+    .hero-slider h1 {
+        font-size: 2em; /* ลดขนาด H1 */
+    }
+    .hero-slider p {
+        font-size: 1.1em;
+    }
+    .section-title {
+        font-size: 1.6em; /* ลดขนาด "เริ่มต้นเส้นทาง..." */
+    }
+    .career-card-container {
+        flex-direction: column; /* << ทำให้การ์ดเรียงแนวตั้ง */
+        gap: 15px;
+    }
+    .career-card {
+        width: 100%; /* << การ์ดกว้างเต็มจอ */
+    }
+
+    /* --- 5. แก้หน้า Quiz (รูป 3 - การ์ดคำตอบ) --- */
+    .quiz-question-container {
+        padding: 20px 15px;
+    }
+    #question-text {
+        font-size: 1.2em;
+    }
+    
+    /* [สำคัญ] ทำให้การ์ดคำตอบกลับมา */
+    .answer-card {
+        display: block; /* << ทำให้การ์ดแสดงผล */
+        padding: 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: center;
+        font-size: 1em;
+    }
+    .answer-card.selected {
+        border-color: #28a745;
+        background-color: #eaf7ed;
+        font-weight: 700;
+    }
+
+    .quiz-navigation {
+        flex-direction: column; /* << ทำให้ปุ่ม "ก่อน/ถัด" เรียงแนวตั้ง */
+        gap: 10px;
+    }
+    .quiz-navigation .button {
+        width: 100%; /* ปุ่มกว้างเต็ม */
+    }
+
+    /* --- 6. แก้หน้า Result (รูป 4, 5 - Layout พัง) --- */
+    .summary-card,
+    .match-analysis,
+    .result-tabs,
+    .save-result-cta {
+        padding: 20px 15px; /* เพิ่ม Padding ให้การ์ด */
+    }
+    .tab-nav {
+        flex-direction: column; /* << ทำให้ปุ่มแท็บเรียงแนวตั้ง */
+    }
+    .tab-link {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* [สำคัญ] ทำให้ Field Card (สาขาวิชา) กลับมา */
+    .field-card {
+        background-color: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    .field-card-header {
+        font-size: 1.1em;
+        font-weight: 700;
+        padding: 15px;
+        background-color: #f9f9f9;
+        cursor: pointer; /* (ถ้าเราจะทำ Accordion) */
+    }
+    .field-card-content {
+        padding: 15px;
+        /* (ถ้าทำ Accordion ต้องซ่อนไว้ก่อน) */
+        /* display: none; */ 
+    }
+    .field-card-content h4 {
+        font-size: 1em;
+        color: #333;
+    }
+    .field-card-content ul {
+        padding-left: 20px; /* << ทำให้ list ไม่ชิดขอบ */
+        margin-top: 10px;
+    }
 }
 }
