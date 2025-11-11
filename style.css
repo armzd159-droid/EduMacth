@@ -38,6 +38,14 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    color: #0056b3;
+}
 
 /* กล่องทำแบบสอบถาม (Desktop ขนาดเดิม) */
 .quiz-container {
@@ -71,121 +79,8 @@ body {
 /* ------------------------------------------------------ */
 
 /* ✅ iPad (แนวตั้งและแนวนอน) */
-@media (max-width: 1024px) {
-    .quiz-container {
-        max-width: 700px;
-        padding: 1.5rem 2rem;
-    }
-
-    .option-box {
-        font-size: 1rem;
-        padding: 0.9rem 1.2rem;
-    }
-
-    .option-box i {
-        font-size: 1.2rem; /* ไอคอนเล็กลงนิด */
-    }
-
-    .quiz-container h2 {
-        font-size: 1.5rem;
-    }
-}
-
-/* ✅ มือถือแนวตั้ง (เช่น iPhone, Android) */
-@media (max-width: 768px) {
-    .quiz-container {
-        max-width: 95%;
-        padding: 1.2rem;
-        margin: 1rem auto;
-        border-radius: 16px;
-    }
-
-    .quiz-container h2 {
-        font-size: 1.2rem;
-        text-align: center;
-        line-height: 1.4;
-    }
-
-    .option-box {
-        flex-direction: column; /* เรียง icon บน / ข้อความล่าง */
-        text-align: center;
-        padding: 0.8rem 1rem;
-        gap: 0.6rem;
-    }
-
-    .option-box i {
-        font-size: 1.4rem;
-        margin-bottom: 0.3rem;
-    }
-
-    .option-box span,
-    .option-box p {
-        font-size: 0.95rem;
-        line-height: 1.4;
-    }
-
-    /* ปุ่มกดต่อไป */
-    .next-button, .submit-button {
-        width: 100%;
-        font-size: 1rem;
-        padding: 0.9rem;
-        border-radius: 12px;
-    }
-}
-
-/* ✅ มือถือจอเล็กพิเศษ (<480px) */
-@media (max-width: 480px) {
-    .quiz-container {
-        padding: 1rem;
-    }
-
-    .option-box {
-        font-size: 0.9rem;
-        padding: 0.7rem;
-        border-radius: 10px;
-    }
-
-    .option-box i {
-        font-size: 1.2rem;
-    }
-
-    .quiz-container h2 {
-        font-size: 1.1rem;
-    }
-
-    .next-button, .submit-button {
-        font-size: 0.95rem;
-    }
-}
-.main-content, 
-.login-container, 
-.quiz-container, 
-.result-container, 
-.guide-container,
-.profile-container {
-    animation: fadeIn 0.5s ease-out;
-    }
-    
-body {/* --- [ใหม่] Animation สำหรับ Fade-in --- */
-/* สั่งให้ "main" ของทุกหน้าใช้ Animation นี้ */
 
 
-    font-family: 'Chakra Petch', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f4f7f6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-a:hover {
-    color: #0056b3;
-}
 
 .button {
     display: inline-block;
@@ -1097,21 +992,6 @@ a:hover {
     }
 
     /* Responsive for Guide Page */
-    @media (min-width: 768px) {
-        .guide-title {
-            font-size: 2.8em;
-        }
-        .guide-step {
-            flex-direction: row; /* Icon beside text on desktop */
-            text-align: left;
-            padding: 30px;
-        }
-        .step-icon {
-            font-size: 3em;
-            margin-bottom: 0;
-            margin-right: 25px;
-        }
-    }
     /* --- [ใหม่] สไตล์สำหรับ Modal Logout --- */
     
 
@@ -1508,7 +1388,6 @@ a:hover {
     .navbar {
         padding: 10px 10px;
         flex-wrap: nowrap; /* << บังคับแถวเดียว */
-        position: relative;
     }
     .navbar .logo {
         font-size: 1.2em; /* << ลดขนาดโลโก้ */
