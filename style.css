@@ -157,9 +157,6 @@ body {
         font-size: 0.95rem;
     }
 }
-
-body {/* --- [ใหม่] Animation สำหรับ Fade-in --- */
-/* สั่งให้ "main" ของทุกหน้าใช้ Animation นี้ */
 .main-content, 
 .login-container, 
 .quiz-container, 
@@ -167,7 +164,12 @@ body {/* --- [ใหม่] Animation สำหรับ Fade-in --- */
 .guide-container,
 .profile-container {
     animation: fadeIn 0.5s ease-out;
-}
+    }
+    
+body {/* --- [ใหม่] Animation สำหรับ Fade-in --- */
+/* สั่งให้ "main" ของทุกหน้าใช้ Animation นี้ */
+
+
     font-family: 'Chakra Petch', sans-serif;
     line-height: 1.6;
     color: #333;
@@ -1498,15 +1500,43 @@ a:hover {
 }
 /* --- [ใหม่ V5] Responsive Patch (ฉบับ "คงการ์ดไว้") --- */
 /* (โค้ดนี้จะทำงาน "เฉพาะ" เมื่อจอกว้างน้อยกว่า 768px) */
+/* --- [ใหม่ V6] Responsive Patch (ฉบับ "บังคับคืนชีพกล่อง") --- */
+/* (โค้ดนี้จะทำงาน "เฉพาะ" เมื่อจอกว้างน้อยกว่า 768px) */
 @media (max-width: 768px) {
 
-    /* --- 1. Base & Header --- */
+    /* --- 1. [แก้!] Header (เรียงแถวเดียว + ลดขนาดโลโก้) --- */
     .navbar {
-        padding: 10px 15px;
-        flex-wrap: wrap; 
+        padding: 10px 10px;
+        flex-wrap: nowrap; /* << บังคับแถวเดียว */
+        position: relative;
     }
     .navbar .logo {
-        font-size: 1.3em;
+        font-size: 1.2em; /* << ลดขนาดโลโก้ */
+        flex-shrink: 0; 
+    }
+    .lang-switcher {
+        position: static;
+        transform: none;
+        margin: 0 5px;
+        padding: 2px;
+        flex-shrink: 0; 
+    }
+    .lang-btn {
+        padding: 3px 8px;
+        font-size: 0.8em;
+    }
+    .nav-icons {
+        gap: 5px; /* << ลดช่องว่างไอคอน */
+        flex-shrink: 0; 
+    }
+    .username-display {
+        max-width: 60px; /* << บีบชื่อ */
+        font-size: 0.6em;
+        padding: 4px 8px;
+    }
+    .nav-icon-link {
+        font-size: 18px; /* << ลดขนาดไอคอน 💬 👤 */
+        padding: 3px;
     }
     .navbar .logo-center {
         font-size: 1.1em; 
@@ -1515,55 +1545,43 @@ a:hover {
         flex-grow: 1;
         text-align: center;
     }
-    .nav-icons {
-        gap: 8px; 
-    }
-    .username-display {
-        max-width: 80px; 
-        font-size: 0.6em;
-    }
-    .nav-icon-link {
-        font-size: 20px; 
-        padding: 3px;
-    }
-    .lang-switcher {
-        position: static;
-        transform: none;
-        margin: 0;
-        padding: 2px;
-    }
-    .lang-btn {
-        padding: 3px 8px;
-        font-size: 0.8em;
-    }
+
     
-    /* --- 2. Main Containers --- */
-    /* [แก้!] เราจะ "คง" กล่องไว้ และเพิ่ม Padding */
+    /* --- 2. Main Containers (แก้! "บังคับ" ให้มีกล่อง) --- */
     .main-content,
-    .result-container,
-    .quiz-container,
     .guide-container,
     .profile-container,
-    .login-container,
     .admin-container {
         padding: 15px; 
         margin: 10px auto;
-        /* (เราจะไม่ลบ "เงา" หรือ "พื้นหลัง" จากสไตล์คอม) */
+        /* [บังคับ!] คืนชีพกล่อง/เงา เผื่อสไตล์เก่าตีกัน */
+        background-color: #fff;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        border-radius: 10px;
     }
-    /* (ยกเว้น Login/Register ให้เต็มจอ) */
+    /* (ยกเว้น Login/Quiz ให้เต็มจอ) */
     .login-container {
         margin: 0;
         border-radius: 0;
         box-shadow: none;
-        height: calc(100vh - 60px); /* (เต็มจอ) */
+        height: calc(100vh - 55px); /* (เต็มจอ) */
     }
 
     /* --- 3. Home Page --- */
-    .hero-slider h1 {
-        font-size: 2em; 
+    .hero-slider {
+        height: 250px; 
     }
-    .hero-slider p {
-        font-size: 1.1em;
+    .slider-item {
+        height: 250px;
+    }
+    .slider-content {
+        padding: 15px;
+    }
+    .slider-content h1 {
+        font-size: 1.5em; 
+    }
+    .slider-content p {
+        font-size: 1em;
     }
     .section-title {
         font-size: 1.6em; 
@@ -1574,6 +1592,7 @@ a:hover {
     }
     .button {
         width: 100%; /* (ปุ่มเต็มจอ) */
+        padding: 10px; 
     }
     .career-card-container {
         flex-direction: column; 
@@ -1583,16 +1602,19 @@ a:hover {
         width: 100%; 
     }
 
-    /* --- 4. Quiz Page --- */
-    /* [แก้!] เราจะ "คง" กล่องของ .quiz-container ไว้ */
+    /* --- 4. Quiz Page (แก้! "บังคับ" ให้มีกล่อง) --- */
     .quiz-container {
         padding: 15px;
-        /* (เราจะไม่ลบ "เงา" หรือ "พื้นหลัง" จากสไตล์คอม) */
+        margin: 10px auto;
+        /* [บังคับ!] คืนชีพกล่อง/เงา */
+        background-color: #fff;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        border-radius: 10px;
     }
     .quiz-question-container {
         padding: 20px 15px;
         margin-bottom: 15px;
-        /* (สไตล์กล่องจะมาจาก .quiz-question-container ด้านบน) */
+        /* (อันนี้มีสไตล์กล่องจาก Desktop อยู่แล้ว) */
     }
     #question-text {
         font-size: 1.2em;
@@ -1607,10 +1629,13 @@ a:hover {
         gap: 10px;
     }
 
-    /* --- 5. Result Page --- */
-    /* [แก้!] เราจะ "คง" กล่องของ .result-container ไว้ */
+    /* --- 5. Result Page (แก้! "บังคับ" ให้มีกล่อง) --- */
     .result-container {
         gap: 15px;
+        background-color: transparent; /* พื้นหลังเทา */
+        box-shadow: none; /* คอนเทนเนอร์หลักใส */
+        padding: 10px; /* ลด Padding ของ Container หลัก */
+        margin: 0 auto;
     }
     .summary-card,
     .match-analysis,
@@ -1618,6 +1643,11 @@ a:hover {
     .save-result-cta,
     .feedback-box {
         padding: 20px 15px; 
+        margin-bottom: 0; /* (เราใช้ gap ของ .result-container แทน) */
+        /* [บังคับ!] คืนชีพกล่อง/เงา */
+        background-color: #fff;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        border-radius: 10px;
     }
     #result-title {
         font-size: 1.5em;
@@ -1642,7 +1672,7 @@ a:hover {
         font-size: 1.1em;
     }
 
-    /* --- 6. Profile Page --- */
+    /* --- 6. Profile Page (คงกล่องไว้) --- */
     .profile-header,
     .history-section {
         padding: 20px 15px;
